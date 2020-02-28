@@ -1,0 +1,426 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package DeberMiercoles;
+
+import Calcular_Iva_Menus.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+
+/**
+ *
+ * @author ISTLOJA_04
+ */
+public class Menus_total {
+ JFrame f = new JFrame();
+    JPanel p = new JPanel();
+    JMenuBar jmb = new JMenuBar();
+    JMenu menu1;
+    JMenu menu2;
+    JMenuItem miCalc, mi2, iva, misalir, mipaint;
+
+    public Menus_total() {
+        f.setTitle("Ventana Principal");
+        f.setSize(500, 450);
+        f.setLocation(200, 200);
+        iniciarComponentes();
+        f.setVisible(true);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void iniciarComponentes() {
+        f.setJMenuBar(jmb);
+        menu1 = new JMenu("Programas");
+        jmb.add(menu1);
+
+        miCalc = new JMenuItem("Aleatorio");
+       
+        miCalc.addActionListener(new OyenteVentanaPrincipal());
+        menu1.add(miCalc);
+        
+       iva = new JMenuItem("Registro");
+       iva.addActionListener(new OyenteVentanaPrincipal());
+        menu1.add(iva);
+
+        misalir = new JMenuItem("Salir");
+        misalir.addActionListener(new OyenteVentanaPrincipal());
+        menu1.add(misalir);
+
+        
+        
+        
+    }
+
+    public class OyenteVentanaPrincipal implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == misalir) {
+                System.exit(0);
+            }
+            if (e.getSource() == miCalc) {
+                new  NombresAleatorios();
+            }
+           
+            if (e.getSource() ==  iva) {
+                new Registro();
+        }
+        
+        }
+        }
+    public static void main(String[] args) {
+        Menus_total e=new Menus_total();
+    }
+    }
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+ 
+package DeberMiercoles;
+
+import Grupal.*;
+import java.awt.Color;
+import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import static javax.swing.JFrame.setDefaultLookAndFeelDecorated;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+/**
+ *
+ * @author USUARIO
+ */
+public class NombresAleatorios extends JFrame {
+    JPanel panel = new JPanel();
+    JTextArea t = new JTextArea();
+    JTextArea t2 = new JTextArea();
+    JTextArea t3 = new JTextArea();
+    JTextArea t4 = new JTextArea();
+    JTextArea t5 = new JTextArea();
+    JTextArea t6 = new JTextArea();
+    JButton b = new JButton("Ver");
+
+    JList l = new JList();
+    JComboBox pon = new JComboBox();
+    String veces;
+    public NombresAleatorios(){
+        setTitle("Aleatorio");
+        setVisible(true);
+        setDefaultLookAndFeelDecorated(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(600,600);
+        setLocation(100, 200);
+       
+    
+       
+      getContentPane().add(panel);
+        panel.setBackground(Color.gray);
+        panel.setLayout(null);
+        
+  
+        b.setBounds(150, 200, 60, 30);
+        panel.add(b);
+         
+        
+       t.setBounds(200, 20, 100, 50);
+        panel.add(t);
+         t2.setBounds(200, 40, 100, 50);
+        panel.add(t2);
+        
+           t3.setBounds(200, 60, 100, 50);
+        panel.add(t3);
+         t4.setBounds(200, 80, 100, 50);
+        panel.add(t4);
+            t5.setBounds(200, 100, 100, 50);
+        panel.add(t5);
+        t6.setBounds(200, 120, 100, 50);
+        panel.add(t6);
+       
+         String [] cb = {"1","2","3","4","5","6"};
+         pon=new JComboBox(cb);
+            pon.setBounds(150, 180, 50, 20);
+        panel.add(pon);
+         
+    String [] cx = {"Futbol","Tenis","Baske","Voley","Ajedres","Natacion"};
+    
+       l=new JList(cx);
+        l.setBounds(50, 20, 100, 150);
+      panel.add(l);
+   
+
+    
+                    
+             
+            
+       
+      
+      
+                  b.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+       int a =Combo(pon.getSelectedIndex());
+            }
+
+            private int Combo(int a) {
+                if (a==0) {
+                      String hola;
+                     hola = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+                     t.setText(" "+hola);
+                    
+                }
+                 if (a==1) {
+                      String mensaje;
+                  String hola;
+                    mensaje = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+ hola = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+   t.setText(mensaje );
+   t2.setText(hola);
+                 }
+                 if (a==2) {
+                      String mensaje;
+                  String hola;
+                   String tercero;
+                   tercero = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+                    mensaje = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+ hola = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+    t.setText(mensaje );
+   t2.setText(hola);
+   t3.setText(tercero);
+                    
+                         
+                     
+                }
+                  if (a==3) {
+                      String mensaje;
+                  String hola;
+                   String tercero;
+                   String cuarto;
+                   cuarto = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+                   tercero = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+                    mensaje = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+ hola = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+  t.setText(mensaje );
+   t2.setText(hola);
+   t3.setText(tercero);
+    t4.setText(cuarto);
+                     
+                          
+                      
+                 
+            }
+                   if (a==4) {
+                      String mensaje;
+                  String hola;
+                   String tercero;
+                   String quinto;
+                   String cuarto;
+                   cuarto = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+                   quinto = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+                   tercero = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+                    mensaje = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+ hola = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+   t.setText(mensaje+" "+hola+" "+tercero+" "+cuarto+" "+quinto );
+   t.setText(mensaje );
+   t2.setText(hola);
+   t3.setText(tercero);
+    t4.setText(cuarto);
+    t5.setText(quinto);
+            }
+                    if (a==5) {
+                     String mensaje;
+                  String hola;
+                   String tercero;
+                   String quinto;
+                   String cuarto;
+                   String sexto;
+                   
+                         sexto = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+                   cuarto = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+                   quinto = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+                   tercero = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+                    mensaje = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+ hola = cx[(int) (Math.floor(Math.random() * ((cx.length - 1) - 0 + 1) + 0))] ;
+     t.setText(mensaje+" "+hola+" "+tercero+" "+cuarto+" "+quinto );
+   t.setText(mensaje );
+   t2.setText(hola);
+   t3.setText(tercero);
+    t4.setText(cuarto);
+    t5.setText(quinto); 
+     t6.setText(quinto); 
+                    }
+                   
+                        
+                     
+                    
+            
+                return 0;
+            }
+
+            
+        });
+
+    }
+    
+    public static void main(String[] args) {
+           NombresAleatorios l=new NombresAleatorios();
+}
+}
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package DeberMiercoles;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+/**
+ *
+ * @author USUARIO
+ */
+public class Registro extends JFrame {
+
+    JPanel p = new JPanel();
+       JPanel p2 = new JPanel();
+    JLabel l = new JLabel("Nombres ");
+    JLabel l1 = new JLabel("Apellidos ");
+    JLabel l2 = new JLabel("Correo Electronico ");
+    JLabel l3 = new JLabel("Fecha nacimiento");
+    JLabel l4 = new JLabel("sexo ");
+    JTextField t = new JTextField();
+    JTextField t1 = new JTextField();
+    JTextField t2 = new JTextField();
+    JTextField t3 = new JTextField();
+    JButton b = new JButton("Agregar");
+      JButton b1 = new JButton("Salir");
+      JComboBox cb=new JComboBox();
+        JComboBox mes=new JComboBox();
+        JTextField t4 = new JTextField();
+          JCheckBox ch1 = new JCheckBox("Masculino");
+
+    JCheckBox ch3 = new JCheckBox("Femenino");
+    JLabel etiqueta = new JLabel();
+    
+
+    public Registro() {
+        setTitle("Registro");
+        setVisible(true);
+        setDefaultLookAndFeelDecorated(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(600, 600);
+        setLocation(100, 200);
+        
+        getContentPane().add(p);
+        p.setBackground(Color.WHITE);
+        p.setLayout(null);
+        
+        etiqueta.setText("Registro");
+        etiqueta.setBounds(200, 1, 200, 50);
+        etiqueta.setHorizontalAlignment(SwingConstants.CENTER);
+        etiqueta.setForeground(Color.black);
+        etiqueta.setFont(new Font("cooper black",0,40));
+        p.add(etiqueta);
+        
+        
+          l.setBounds(25, 60, 80, 20);
+        p.add(l);
+        
+        t.setBounds(25, 80, 150, 20);
+        p.add(t);
+        
+          l1.setBounds(300, 60, 80, 20);
+        p.add(l1);
+        
+         t1.setBounds(300, 80, 150, 20);
+        p.add(t1);
+        
+   
+        b.setBounds(50, 400, 80, 20);
+        p.add(b);
+        
+         b1.setBounds(300, 400, 80, 20);
+        p.add(b1);
+        
+          l2.setBounds(25, 120, 130, 20);
+        p.add(l2);
+        
+          t2.setBounds(25, 140, 170, 20);
+        p.add(t2);
+        
+        l3.setBounds(25, 180, 170, 20);
+        p.add(l3);
+        
+        String[]cx={"1","2","3","4","5","6","6","8","9","10","11","12","13","14","5","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
+         cb=new JComboBox(cx);
+            cb.setBounds(25, 200, 50, 20);
+        
+        p.add(cb);
+        
+        
+         String[]cd={"ENE","FEBRE","MARZO","ABRIL","MAYO","JUN","JULIO","AGOST","SEMPT","NOBIEM","DICIEM"};
+       mes=new JComboBox(cd);
+            mes.setBounds(100, 200, 75, 20);
+        p.add(mes);
+        
+        t4.setBounds(190, 200, 100, 20);
+        p.add(t4);
+        
+          l4.setBounds(25, 250, 170, 20);
+            p.add(l4);
+        
+            ch1.setBounds(25, 280, 100, 20);
+            p.add(ch1);
+            
+               ch3.setBounds(150, 280, 100, 20);
+            p.add(ch3);
+        b1.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               if (e.getSource()==b) {
+                     System.exit(0);
+                     
+                 } else {
+                     dispose();
+                 }
+             }
+        });
+            
+
+
+               }
+    public static void main(String[] args) {
+        Registro r = new Registro();
+    }
+         
+}
